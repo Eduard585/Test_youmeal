@@ -1,5 +1,5 @@
 import { catalogList, countAmount, modalDelivery, modalProductBtn, order, orderCount, orderList, orderSubmit, orderTotalAmount, orderWrapTitel } from "./elements.js";
-import { getData } from "./getData.js";
+import { getDataById } from "./getData.js";
 import { API_URL, PREFIX_PRODUCT } from "./const.js";
 import { orderController } from "./orderController.js";
 
@@ -18,7 +18,7 @@ const renderCartList = async () => {
     orderSubmit.disabled = !cartList.length;
     const allIdProduct = cartList.map(item => item.id);
     const data = cartList.length
-        ? await getData(`${API_URL}${PREFIX_PRODUCT}?list=${allIdProduct}`)
+        ? await getDataById(allIdProduct)
         : [];
 
     const countProduct = cartList.reduce((acc, item) => acc + item.count, 0);

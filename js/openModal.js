@@ -8,11 +8,11 @@ import { ingredientsList,
         modalProduct,  
         modalProductBtn
     } from "./elements.js";
-import { getData } from "./getData.js";
+import { getDataById } from "./getData.js";
 
 export const openModal = async (id) => {
 
-    const product = await getData(`${API_URL}${PREFIX_PRODUCT}/${id}`)
+    const product = await getDataById(id)
     modalProductTitel.textContent = product.title;
     modalProductImage.src = `${API_URL}/${product.image}`;
 
